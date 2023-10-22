@@ -16,7 +16,7 @@ const getUserById = (router) => {
     if (user) {
       send(response, user, 200);
     } else {
-      send(response, `Пользователя с id ${id} не существует`, 404);
+      send(response, `Пользователя с id ${ id } не существует`, 404);
     }
   });
 }
@@ -24,8 +24,20 @@ const getUserById = (router) => {
 // добавление нового пользователя
 const sendNewUser = (router) => {
   router.post("/user", (request, response) => {
-    console.log(request.body)
-    send(response, request.body, 200);
+    const newUser = request.body;
+    // добавить еще обязательные поля
+    if (!newUser.name) {
+      send(response, `Нет обязательного поля name`, 404);
+    } else if (!newUser.fullName) {
+      send(response, `Нет обязательного поля fullName`, 404);
+    } else {
+      const newId = USERS.reduce((a, b) => a > b.id ? a : b.id) + 1;
+      USERS.push({
+        id: newId,
+        ...newUser
+      });
+      send(response, USERS, 200);
+    }
   });
 }
 

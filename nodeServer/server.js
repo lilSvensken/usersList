@@ -3,8 +3,19 @@ const { getUsers, getUserById, sendNewUser } = require('./api/users.js');
 const HOST_URL = 'http://localhost:8080';
 const PORT = 3000;
 
+// Подключение новых запросов:
+function initRequests(router) {
+  getUsers(router)
+  getUserById(router)
+  sendNewUser(router)
+}
+
 const express = require('express')
 const app = express()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+const cors = require('cors');
+app.use(cors());
 const router = express.Router();
 
 app.use((req, res, next) => {
@@ -19,10 +30,7 @@ app.use((request, response, next) => {
 
 app.use('/app', express.static('app'));
 
-// ЗАПРОСЫ:
-getUsers(router)
-getUserById(router)
-sendNewUser(router)
+initRequests(router)
 
 app.use((err, request, response, next) => {
   console.log(`Завершён с ошибкой: ${ err }`);
