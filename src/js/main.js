@@ -46,8 +46,21 @@ function addLeadZero(val) {
 //     console.log(user.data.name)
 //   })
 
-fetch("http://127.0.0.1:3000/api/v1/user/1", {
-  method: "DELETE",
+// fetch("http://127.0.0.1:3000/api/v1/user/1", {
+//   method: "DELETE",
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Accept': 'application/json'
+//   },
+// })
+//   .then((data) => data.json())
+//   .then((data) => {
+//     document.body.innerHTML = ''
+//     if (data.data) data.data.map(userItem => createUserCard(userItem))
+//   })
+
+fetch("http://127.0.0.1:3000/api/v1/filter?name=ер&patronus=вы", {
+  method: "GET",
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'

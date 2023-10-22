@@ -104,6 +104,17 @@ const replaceUser = (router) => {
   });
 }
 
+const filterUser = (router) => {
+  router.get("/filter", (request, response) => {
+    console.log(request.query)
+    let newList = USERS;
+    Object.entries(request.query).forEach(([key, value]) => {
+      newList = newList.filter(user => user[key].toLowerCase()?.includes(value.toLowerCase()))
+    })
+    send(response, newList, 200);
+  });
+}
+
 function getErrorByRequiredFields(obj) {
   const FIELDS_REQUIRED = ['name', 'fullName', 'avatar', 'dob', 'patronus'];
   const emptyFields = [];
@@ -123,4 +134,5 @@ module.exports = {
   deleteUser,
   changeUser,
   replaceUser,
+  filterUser,
 };
