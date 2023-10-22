@@ -5,13 +5,13 @@ import Alert from 'bootstrap/js/dist/alert'
 // или укажите, какие плагины вам нужны:
 import { Tooltip, Toast, Popover } from 'bootstrap'
 
-fetch("http://127.0.0.1:3000/api/v1/users", {
-  method: "GET",
-})
-  .then((data) => data.json())
-  .then((usersArr) => {
-    if (usersArr.data) usersArr.data.map(userItem => createUserCard(userItem))
-  })
+// fetch("http://127.0.0.1:3000/api/v1/users", {
+//   method: "GET",
+// })
+//   .then((data) => data.json())
+//   .then((usersArr) => {
+//     if (usersArr.data) usersArr.data.map(userItem => createUserCard(userItem))
+//   })
 
 function createUserCard(user) {
   document.body.innerHTML += `
@@ -46,18 +46,16 @@ function addLeadZero(val) {
 //     console.log(user.data.name)
 //   })
 
-fetch("http://127.0.0.1:3000/api/v1/user", {
-  method: "POST",
+fetch("http://127.0.0.1:3000/api/v1/user/1", {
+  method: "DELETE",
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   },
-  body: JSON.stringify({
-    name: "Иван",
-    fullName: "Иванов",
-  })
 })
   .then((data) => data.json())
   .then((data) => {
-    console.log(data)
+    document.body.innerHTML = ''
+    if (data.data) data.data.map(userItem => createUserCard(userItem))
   })
+

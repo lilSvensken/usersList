@@ -1,4 +1,4 @@
-const { getUsers, getUserById, sendNewUser } = require('./api/users.js');
+const { getUsers, getUserById, sendNewUser, deleteUser, changeUser, replaceUser } = require('./api/users.js');
 
 const HOST_URL = 'http://localhost:8080';
 const PORT = 3000;
@@ -8,6 +8,9 @@ function initRequests(router) {
   getUsers(router)
   getUserById(router)
   sendNewUser(router)
+  deleteUser(router)
+  changeUser(router)
+  replaceUser(router)
 }
 
 const express = require('express')
