@@ -16,9 +16,9 @@ fetch("http://127.0.0.1:3000/api/v1/users", {
 function createUserCard(user) {
   document.body.innerHTML += `
     <div class="card">
-      <h3>Имя: ${user.name}</h3>
-      <img src="${user.avatar}" alt="${user.username}">
-      <p>Др: ${convertDate(user.dob)}</p>
+      <h3>Имя: ${ user.name }</h3>
+      <img src="${ user.avatar }" alt="${ user.username }">
+      <p>Др: ${ convertDate(user.dob) }</p>
     </div>
   `
 }
@@ -38,10 +38,21 @@ function addLeadZero(val) {
   return val;
 }
 
-fetch("http://127.0.0.1:3000/api/v1/user/2", {
-  method: "GET",
+// fetch("http://127.0.0.1:3000/api/v1/user/2", {
+//   method: "GET",
+// })
+//   .then((data) => data.json())
+//   .then((user) => {
+//     console.log(user.data.name)
+//   })
+
+fetch("http://127.0.0.1:3000/api/v1/user", {
+  method: "POST",
+  body: JSON.stringify({
+    name: "Иван",
+  })
 })
   .then((data) => data.json())
-  .then((user) => {
-    console.log(user.data.name)
+  .then((data) => {
+    console.log(data)
   })

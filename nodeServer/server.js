@@ -1,4 +1,4 @@
-const { getUsers, getUserById } = require('./api/users.js');
+const { getUsers, getUserById, sendNewUser } = require('./api/users.js');
 
 const HOST_URL = 'http://localhost:8080';
 const PORT = 3000;
@@ -22,6 +22,7 @@ app.use('/app', express.static('app'));
 // ЗАПРОСЫ:
 getUsers(router)
 getUserById(router)
+sendNewUser(router)
 
 app.use((err, request, response, next) => {
   console.log(`Завершён с ошибкой: ${ err }`);
