@@ -20,7 +20,6 @@ app.use((request, response, next) => {
 
 app.use('/app', express.static('app'));
 
-// FIXME ЗАПРОСЫ:
 /** Получить элементы: */
 getItems(router)
 /** Назначить новый элемент: */
