@@ -67,7 +67,7 @@ const changeUser = (router) => {
         fullName: body.fullName || currentUser.fullName,
         avatar: body.avatar || currentUser.avatar,
         dob: body.dob || currentUser.dob,
-        patronus: body.patronus || currentUser.patronus,
+        faculty: body.faculty || currentUser.faculty,
       }
       USERS.splice(USERS.indexOf(currentUser), 1, newUser)
       send(response, USERS, 200);
@@ -95,7 +95,7 @@ const replaceUser = (router) => {
         fullName: newUser.fullName,
         avatar: newUser.avatar,
         dob: newUser.dob,
-        patronus: newUser.patronus,
+        faculty: newUser.faculty,
       });
       send(response, USERS, 200);
     } else {
@@ -116,7 +116,7 @@ const filterUser = (router) => {
 }
 
 function getErrorByRequiredFields(obj) {
-  const FIELDS_REQUIRED = ['name', 'fullName', 'avatar', 'dob', 'patronus'];
+  const FIELDS_REQUIRED = ['name', 'fullName', 'avatar', 'dob', 'faculty'];
   const emptyFields = [];
   FIELDS_REQUIRED.forEach((field) => {
     if (!obj[field]) {
