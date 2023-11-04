@@ -33,7 +33,8 @@ const sendNewUser = (router) => {
       const newId = USERS.reduce((a, b) => a > b.id ? a : b.id) + 1;
       USERS.push({
         id: newId,
-        ...newUser
+        ...newUser,
+        faculty: Number(newUser.faculty)
       });
       send(response, USERS, 200);
     }
